@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deployment
+  namespace: rbailey
+  labels:
+    app: app
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  minReadySeconds: 20
+  selector:
+    matchLabels:
+      app: app
+
+  template:
+    metadata:
+      labels:
+        app: app
+  
+    spec:
+      containers:
+      - envFrom:
+        - secretRef:
+            name: db-secret
+        name: app-deployment
+        image: registry.dev.afsmtddso.com/rbailey-harbor-project/lab-env-repo@sha256:505dda11214095314e151b844fa32e41d460ac218657e78f5c960329081a38c5
+        ports:
+        - containerPort: 5000
