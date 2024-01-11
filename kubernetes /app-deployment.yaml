@@ -27,6 +27,6 @@ spec:
         - secretRef:
             name: db-secret
         name: app-deployment
-        image: registry.dev.afsmtddso.com/rbailey-harbor-project/lab-env-repo@sha256:505dda11214095314e151b844fa32e41d460ac218657e78f5c960329081a38c5
+        image: registry.dev.afsmtddso.com/rbailey-harbor-project/app:48e9c9d-eaa85d6
         ports:
         - containerPort: 5000
